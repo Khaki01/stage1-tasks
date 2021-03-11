@@ -52,7 +52,37 @@
       </a>
     </div>
   </footer>
-  <script src="script.js"></script>
+<script>
+
+
+  const letterDisplay = document.querySelector('.btn-letters');
+  const noteDisplay = document.querySelector('.btn-notes');
+
+  // The switch function for displaying as letters
+  letterDisplay.addEventListener('click', function(e){
+    if(!this.classList.contains('btn-active')){
+      this.classList.add('btn-active');
+      noteDisplay.classList.remove('btn-active');
+    }
+  });
+  
+  // The switch function for displaying as notes
+  noteDisplay.addEventListener('click', function(e){
+    if(!this.classList.contains('btn-active')){
+      this.classList.add('btn-active');
+      letterDisplay.classList.remove('btn-active');
+    }
+  });
+
+
+  
+
+  
+
+
+
+
+</script>
 </body>
 
 </html>
