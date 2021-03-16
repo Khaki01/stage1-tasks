@@ -52,36 +52,21 @@
       </a>
     </div>
   </footer>
-<script>
 
 
-  const letterDisplay = document.querySelector('.btn-letters');
-  const noteDisplay = document.querySelector('.btn-notes');
-
-  // The switch function for displaying as letters
-  letterDisplay.addEventListener('click', function(e){
-    if(!this.classList.contains('btn-active')){
-      this.classList.add('btn-active');
-      noteDisplay.classList.remove('btn-active');
-    }
-  });
-  
-  // The switch function for displaying as notes
-  noteDisplay.addEventListener('click', function(e){
-    if(!this.classList.contains('btn-active')){
-      this.classList.add('btn-active');
-      letterDisplay.classList.remove('btn-active');
-    }
-  });
-
-
-  
-
-  
-
-
-
-
+  <audio src="./assets/audio/a.mp3" data-letter="K"></audio>
+  <audio src="./assets/audio/b.mp3" data-letter="L"></audio>
+  <audio src="./assets/audio/c.mp3" data-letter="D"></audio>
+  <audio src="./assets/audio/d.mp3" data-letter="F"></audio>
+  <audio src="./assets/audio/e.mp3" data-letter="G"></audio>
+  <audio src="./assets/audio/f.mp3" data-letter="H"></audio>
+  <audio src="./assets/audio/g.mp3" data-letter="J"></audio>
+  <audio src="./assets/audio/a♯.mp3" data-letter="O"></audio>
+  <audio src="./assets/audio/c♯.mp3" data-letter="R"></audio>
+  <audio src="./assets/audio/d♯.mp3" data-letter="T"></audio>
+  <audio src="./assets/audio/f♯.mp3" data-letter="U"></audio>
+  <audio src="./assets/audio/g♯.mp3" data-letter="I"></audio>
+<script src="./script.js">    
 </script>
 </body>
 

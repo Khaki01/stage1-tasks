@@ -131,6 +131,7 @@ body {
 .piano-key::before,
 .piano-key::after {
 	content: attr(data-note);
+	pointer-events: none;
 	position: absolute;
 	width: 40px;
 	height: 40px;
@@ -157,6 +158,7 @@ body {
 
 .piano-key.sharp::before,
 .piano-key.sharp::after {
+	pointer-events: none;
 	bottom: 175px;
 	left: 7px;
 }
