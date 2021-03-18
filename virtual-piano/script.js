@@ -2,6 +2,7 @@ const letterDisplay = document.querySelector('.btn-letters');
 const noteDisplay = document.querySelector('.btn-notes');
 const pianoKeys = document.querySelectorAll('.piano-key');
 const pianoBoard = document.querySelector('.piano');
+const screenSize = document.querySelector('.fullscreen');
 
 // The switch function for displaying as letters
 letterDisplay.addEventListener('click', function(e){
@@ -28,6 +29,7 @@ window.addEventListener('keydown', function(e){
   let audio = document.querySelector(`audio[data-letter="${e.code.slice(3)}"]`);
   if(key){
     key.classList.add('piano-key-active');
+    key.classList.add('piano-key-active-pseudo');
     audio.currentTime = 0;
     audio.play();
     audio.repeat
@@ -38,11 +40,13 @@ window.addEventListener('keydown', function(e){
 window.addEventListener('keyup', function(e){
     key = document.querySelector(`div[data-letter="${e.code.slice(3)}"]`);
     key.classList.remove('piano-key-active');
+    key.classList.remove('piano-key-active-pseudo');
 });
 
 //return keys back to normal state
 pianoKeys.forEach(key => key.addEventListener('mouseup', function(e){
   this.classList.remove('piano-key-active');
+  this.classList.remove('piano-key-active-pseudo');
 }));
 
 
@@ -57,6 +61,7 @@ pianoKeys.forEach(key => key.addEventListener('mousedown', function(e){
     let audio = document.querySelector(`audio[data-letter="${e.target.attributes[1].value}"]`);
     if(key){
       key.classList.add('piano-key-active');
+      key.classList.add('piano-key-active-pseudo');
       audio.currentTime = 0;
       audio.play();
   }
@@ -77,6 +82,7 @@ pianoKeys.forEach(key => key.addEventListener('mouseenter', function(e){
     let audio = document.querySelector(`audio[data-letter="${e.target.attributes[1].value}"]`);
     if(key && audio){
       key.classList.add('piano-key-active');
+      key.classList.add('piano-key-active-pseudo');
       audio.currentTime = 0;
       audio.play();
     }
@@ -88,8 +94,22 @@ pianoKeys.forEach(key => key.addEventListener('mouseleave', function(e){
     
     let key = document.querySelector(`div[data-letter="${e.target.attributes[1].value}"]`);
     key.classList.remove('piano-key-active');
-    
+    key.classList.remove('piano-key-active-pseudo');
   }));
+
+
+  // set the screen size
+  screenSize.addEventListener('click', function(e){
+    
+    if (!document.fullscreenElement){
+      this.classList.add("openfullscreen");
+      document.documentElement.requestFullscreen();
+    }
+    else{
+      this.classList.remove("openfullscreen");
+      document.exitFullscreen();
+    }
+  });
 
 
 

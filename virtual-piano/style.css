@@ -118,9 +118,13 @@ body {
 	pointer-events: auto;
 	transform-origin: center top;
 }
-.piano-key.piano-key-active,
+.piano-key.piano-key-active{
+	transform: scale(0.96);
+	background-color: #5185b9;
+}
 .piano-key.sharp.piano-key-active {
 	transform: scale(0.96);
+	background-color: #264666;
 }
 .piano-key.none {
 	background-color: transparent;
@@ -197,6 +201,11 @@ body {
 	cursor: pointer;
 	background-image: url("assets/svg/fullscreen-open.svg");
 }
+
+.openfullscreen{
+	background-image: url("assets/svg/fullscreen-exit.svg");
+}
+
 .fullscreen:hover {
 	background-color: rgba(255, 255, 255, 0.5);
 }
