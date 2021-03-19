@@ -3,6 +3,7 @@ const noteDisplay = document.querySelector('.btn-notes');
 const pianoKeys = document.querySelectorAll('.piano-key');
 const pianoBoard = document.querySelector('.piano');
 const screenSize = document.querySelector('.fullscreen');
+const mainWindow = document.querySelector('.main');
 
 // The switch function for displaying as letters
 letterDisplay.addEventListener('click', function(e){
@@ -30,6 +31,7 @@ window.addEventListener('keydown', function(e){
   if(key){
     key.classList.add('piano-key-active');
     key.classList.add('piano-key-active-pseudo');
+    makeBubble();
     audio.currentTime = 0;
     audio.play();
     audio.repeat
@@ -39,8 +41,10 @@ window.addEventListener('keydown', function(e){
 // deactivating when keyboard is not pressed anymore
 window.addEventListener('keyup', function(e){
     key = document.querySelector(`div[data-letter="${e.code.slice(3)}"]`);
-    key.classList.remove('piano-key-active');
+    if(key){
+      key.classList.remove('piano-key-active');
     key.classList.remove('piano-key-active-pseudo');
+    }
 });
 
 //return keys back to normal state
@@ -62,6 +66,7 @@ pianoKeys.forEach(key => key.addEventListener('mousedown', function(e){
     if(key){
       key.classList.add('piano-key-active');
       key.classList.add('piano-key-active-pseudo');
+      makeBubble();
       audio.currentTime = 0;
       audio.play();
   }
@@ -83,6 +88,7 @@ pianoKeys.forEach(key => key.addEventListener('mouseenter', function(e){
     if(key && audio){
       key.classList.add('piano-key-active');
       key.classList.add('piano-key-active-pseudo');
+      makeBubble();
       audio.currentTime = 0;
       audio.play();
     }
@@ -111,5 +117,21 @@ pianoKeys.forEach(key => key.addEventListener('mouseleave', function(e){
     }
   });
 
+
+// make random bubbles, inspired from some youtube video
+function makeBubble(){
+  const bubbleElem = document.createElement('span');
+  let size = Math.random() * 40;
+
+  bubbleElem.style.width = 15+size + 'px';
+  bubbleElem.style.height = 15+size + 'px';
+  bubbleElem.style.left = Math.random()*innerWidth + 'px';
+  bubbleElem.style.background = `rgba(${Math.random()*255} ${Math.random()*255} ${Math.random()*255})`;
+  mainWindow.appendChild(bubbleElem);
+
+  setTimeout(()=>{
+    bubbleElem.remove();
+  }, 3000);
+}
 
 
